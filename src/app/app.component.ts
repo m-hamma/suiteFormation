@@ -10,12 +10,23 @@ export class AppComponent implements OnInit{
   public form:FormGroup;
   ngOnInit():void {
     this.form = new FormGroup({
-      nom:new FormControl(''),
+      nom1:new FormControl(''),
       email:new FormControl(''),
-      passwoed:new FormControl('')
+      password:new FormControl('')
     });
+    this.form.addControl('nom', new FormControl(''));
+   this.form.removeControl('nom1');
+   /* this.form.patchValue({
+      email:'mouldha@gmail.com',
+    });*/
+    this.form.setValue({
+          nom:'Hamma',
+          email:'mould@gmail.com',
+          password:'xxxx',
+     });
   }
   submit () : void {
+  this.form.reset();
   console.log(this.form);
   }
 }
