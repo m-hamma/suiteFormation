@@ -3,6 +3,14 @@
     <div class="d-flex flex-column form-group flex-fill">
       <label>Nom</label>
       <input formControlName="nom" type="text"/>
+      <div *ngIf="nom.errors && nom.touched">
+        <p class="error" *ngIf="nom.errors.notPaul">
+          Le nom doit etre différent de paul
+        </p>
+        <p class="error" *ngIf="nom.errors.required">
+          Le nom est obligatoire
+        </p>
+      </div>
     </div>
     <div class="d-flex flex-column form-group">
       <label for="email">Email</label>
@@ -11,10 +19,22 @@
     <div class="d-flex flex-column form-group">
       <label>Password</label>
       <input formControlName="password" type="password"/>
+      <div *ngIf="password.errors && password.touched">
+        <p class="error" *ngIf="password.errors.notMatching && password.touched">
+          Les mots de passe ne sont pas identiques
+        </p>
+
+      </div>
     </div>
     <div class="d-flex flex-column form-group">
       <label>Confirm Password</label>
-      <input type="password"/>
+      <input #confirmation type="password"/>
+      <div *ngIf="password.errors && password.touched">
+        <p class="error" *ngIf="password.errors.notMatching && password.touched">
+          Les mots de passe ne sont pas identiques
+        </p>
+
+      </div>
     </div>
     <button class="btn btn-primary" style="margin-top:20px;">Valider</button>
   </form>
