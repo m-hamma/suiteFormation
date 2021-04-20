@@ -61,7 +61,7 @@ export class AppComponent implements OnInit{
         //this.form.reset();
         console.log(this.form.valid);
       }
-      passwordMatch (formControl:FormControl):{[s:string]:boolean} | null {
+      passwordMatch (formControl:FormControl):{[s:string]:boolean}  {
         if (formControl.value !== this.el.nativeElement.value) {
           return {notMatching:true};
         } else {

@@ -6,3 +6,9 @@
   }
   margin-bottom:10px;
 }
+.ng-valid {
+  border-color: grey;
+}
+.ng-invalid.ng-touched {
+  border-color: red;
+}
