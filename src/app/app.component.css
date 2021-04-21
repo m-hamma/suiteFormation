@@ -6,6 +6,9 @@
   }
   margin-bottom:10px;
 }
+.error {
+ color:red;
+}
 .ng-valid {
   border-color: grey;
 }

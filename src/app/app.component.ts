@@ -10,21 +10,26 @@ export class AppComponent implements OnInit{
   public form:FormGroup;
   @ViewChild('confirmation', {static:true})
   public el:ElementRef<any>;
+  public validerPassword = false;
 
   get nom() {
       return this.form.get('nom');
   }
   get password() {
-      return this.form.get('password');
+      const formLogin =this.form.get('login');
+      const retour =formLogin.get('password');
+      return retour;
   }
   get confirmPassword() {
    return this.el.nativeElement;
   }
   ngOnInit():void {
     this.form = new FormGroup({
+    login : new FormGroup({
+                 email:new FormControl('',Validators.email),
+                 password:new FormControl('', this.passwordMatch.bind(this))
+               }),
       nom:new FormControl('',[this.validatorPaul, Validators.required],/*this.validatorAsynch*/),
-      email:new FormControl('',Validators.email),
-      password:new FormControl('', this.passwordMatch.bind(this))
     });
     //this.form.addControl('nom1', new FormControl('',this.validatorPaul));
    //this.form.removeControl('nom1');
@@ -34,10 +39,9 @@ export class AppComponent implements OnInit{
 
     this.form.setValue({
           nom:'',
-          email:'mould@gmail.com',
-          password:'xxxx',
+          login :{email:'mould@gmail.com',
+                                 password:''}
      });
-
      //this.form.get('nom').
   }
    validatorPaul(formControl:FormControl):{[s:string]:boolean} | null{
@@ -67,5 +71,8 @@ export class AppComponent implements OnInit{
         } else {
           return null;
         }
+      }
+      public lancerValidationChamp (){
+          this.validerPassword =true;
       }
 }
