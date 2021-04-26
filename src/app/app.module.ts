@@ -4,10 +4,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormArrayComponent } from './form-array/form-array.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormArrayComponent
   ],
   imports: [
     BrowserModule,

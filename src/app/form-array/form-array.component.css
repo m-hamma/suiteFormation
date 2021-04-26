@@ -1,0 +1,17 @@
+.form-group {
+  max-width:500px;
+  label {
+    font-weight:bold;
+    margin-bottom:5px;
+  }
+  margin-bottom:10px;
+}
+.error {
+ color:red;
+}
+.ng-valid {
+  border-color: grey;
+}
+.ng-invalid.ng-touched {
+  border-color: red;
+}
