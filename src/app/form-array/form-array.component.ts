@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormArray, FormBuilder,FormGroup, FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-form-array',
   templateUrl: './form-array.component.html',
@@ -8,13 +8,27 @@ import {FormArray, FormGroup, FormControl, Validators} from '@angular/forms';
 export class FormArrayComponent implements OnInit {
 
    public form:FormGroup;
+    constructor( private fb:FormBuilder){
+    }
     ngOnInit():void {
-      this.form = new FormGroup({
+    this.form=this.fb.group({
+            email:['', Validators.required],
+            hobbies : this.fb.array([]),
+            password:[''],
+            nom:[''],
+    });
+    /*this.form.valueChanges.subscribe((value)=>{
+    console.log(value);
+    });
+    this.form.statusChanges.subscribe((statut)=>{
+        console.log(statut);
+        });*/
+      /*this.form = new FormGroup({
         email:new FormControl(''),
         hobbies : new FormArray([new FormControl('')]),
         password:new FormControl(''),
         nom:new FormControl(''),
-      });
+      });*/
 
     }
 
@@ -27,7 +41,11 @@ export class FormArrayComponent implements OnInit {
           return this.form.get('hobbies') as FormArray;
         }
         addHobby () {
-          this.hobbies.push(new FormControl(''));
+        const control = new FormControl('');
+        control.valueChanges.subscribe((value)=>{
+            console.log(value);
+            });
+          this.hobbies.push(control);
         }
         valider () {
                  console.log(this.form);
