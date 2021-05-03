@@ -8,6 +8,9 @@ import {FormArray, FormBuilder,FormGroup, FormControl, Validators} from '@angula
 export class FormArrayComponent implements OnInit {
 
    public form:FormGroup;
+   public cities = [
+   {label:'Paris',value:'paris'},
+   {label:'Lyon',value:'lyon'}];
     constructor( private fb:FormBuilder){
     }
     ngOnInit():void {
@@ -16,6 +19,9 @@ export class FormArrayComponent implements OnInit {
             hobbies : this.fb.array([]),
             password:[''],
             nom:[''],
+            gender:[''],
+            city:[''],
+            majeur:['']
     });
     /*this.form.valueChanges.subscribe((value)=>{
     console.log(value);
